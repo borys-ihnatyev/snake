@@ -1,4 +1,4 @@
-import {CREATE, DIRECT, MOVE} from './snakeActionTypes'
+import { CREATE, DIRECT, MOVE } from './snakeActionTypes'
 
 export const createSnakeAction = () => (dispatch, getState) => {
     const { settings } = getState()
@@ -6,7 +6,7 @@ export const createSnakeAction = () => (dispatch, getState) => {
     dispatch({
         type: CREATE,
         fieldSize: settings.fieldSize,
-        snakeSize: settings.snakeSize
+        snakeLength: settings.snakeLength
     })
 }
 
