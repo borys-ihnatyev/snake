@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "rootDir": "src",
+        "jsx": "react",
+        "module": "commonjs",
+        "allowSyntheticDefaultImports": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*.js"
+    ]
+}
