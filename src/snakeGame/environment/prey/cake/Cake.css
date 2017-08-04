@@ -1,4 +1,8 @@
 .cake {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
     background-color: plum;
     border-radius: 50%;
 }

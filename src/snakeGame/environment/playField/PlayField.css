@@ -1,4 +1,5 @@
 .play-field {
+    position: relative;
     box-sizing: content-box;
     border: 1px dashed #fff
 }
