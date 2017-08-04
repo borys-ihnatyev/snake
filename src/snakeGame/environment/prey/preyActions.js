@@ -1,13 +1,11 @@
-export const preyActionTypes = {
-    create: `prey/create`
-}
+import {CREATE_PREY} from './preyActionTypes'
 
 export const createPreyAction = () => (dispatch, getState) => {
-    const { snake, settings: { fieldSize } } = getState()
+    const {snake, settings: {fieldSize}} = getState()
 
     dispatch({
-        type: preyActionTypes.create,
+        type: CREATE_PREY,
         snake,
-        fieldSize
+        fieldSize,
     })
 }

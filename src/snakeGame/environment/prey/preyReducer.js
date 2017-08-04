@@ -1,14 +1,13 @@
-import { none, equals } from 'ramda'
-import { preyActionTypes } from './preyActions'
+import {none, equals} from 'ramda'
+import {CREATE_PREY} from './preyActionTypes'
 
-const defaultPreyState = {
-}
+const defaultPreyState = {}
 
 export function preyReducer(state = defaultPreyState, action) {
 
-    if (action.type === preyActionTypes.create) {
-        const { snake, fieldSize } = action
-        return { position: calculatePreyPosition(snake, fieldSize) }
+    if (action.type === CREATE_PREY) {
+        const {snake, fieldSize} = action
+        return {position: calculatePreyPosition(snake, fieldSize)}
     }
 
     return state
@@ -22,8 +21,8 @@ function calculatePreyPosition(snake, fieldSize) {
 }
 
 const sizeToRange = (size) => ({
-    x: { from: 0, to: size.width - 1 },
-    y: { from: 0, to: size.height - 1 }
+    x: {from: 0, to: size.width - 1},
+    y: {from: 0, to: size.height - 1},
 })
 
 const toSnakePoints = (snake) => [
@@ -32,10 +31,10 @@ const toSnakePoints = (snake) => [
 ]
 
 function randomPoint(range) {
-    return { x: random(range.x), y: random(range.y) }
+    return {x: random(range.x), y: random(range.y)}
 }
 
-function random({ from, to }) {
-    return from + to * Math.random()
+function random({from, to}) {
+    return Math.trunc((to - from) * Math.random())
 }
 

@@ -1,3 +1,4 @@
 export * from './Prey'
-export * from './preyReducer'
+export * from './preyActionTypes'
 export * from './preyActions'
+export * from './preyReducer'
