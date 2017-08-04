@@ -1,7 +1,6 @@
 import uuid from 'uuid/v1'
 import { range } from 'ramda'
-import { UP } from '../../physics/direction'
-import { CREATE, MOVE, DIRECT } from './snakeActionTypes'
+import { CREATE, MOVE } from './snakeActionTypes'
 
 const defaultState = {}
 
@@ -19,30 +18,21 @@ export function snakeReducer(state = defaultState, action) {
             .map((x) => createSnakePart({ x, y: head.y }))
 
         return {
-            direction: UP,
             head,
             tail,
         }
     }
 
     if (action.type === MOVE) {
-        const { direction, head: prevHead, tail } = state
-        const { fieldSize } = action
+        const {  head: prevHead, tail } = state
+        const { fieldSize, direction } = action
 
         return {
-            ...state,
             head: mapPointToField({
                 x: prevHead.x + direction.x,
-                y: prevHead.y + direction.y
+                y: prevHead.y + direction.y,
             }, fieldSize),
             tail: [createSnakePart(prevHead), ...withoutLast(tail)],
-        }
-    }
-
-    if (action.type === DIRECT) {
-        return {
-            ...state,
-            direction: action.direction
         }
     }
 
@@ -52,7 +42,7 @@ export function snakeReducer(state = defaultState, action) {
 function createSnakePart({ x, y }) {
     return {
         id: uuid(),
-        position: { x, y }
+        position: { x, y },
     }
 }
 

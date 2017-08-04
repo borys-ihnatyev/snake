@@ -11,15 +11,11 @@ export const createSnakeAction = () => (dispatch, getState) => {
 }
 
 export const moveSnakeAction = () => (dispatch, getState) => {
-    const { settings } = getState()
+    const { settings, snakeMoveDirection } = getState()
 
     dispatch({
         type: MOVE,
+        direction: snakeMoveDirection,
         fieldSize: settings.fieldSize,
     })
 }
-
-export const directSnakeAction = (direction) => ({
-    type: DIRECT,
-    direction,
-})

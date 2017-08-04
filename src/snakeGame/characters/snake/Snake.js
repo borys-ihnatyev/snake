@@ -8,33 +8,37 @@ export const Snake = connect(mapStateToProps)(
     ({ size, head, tail, transitionDuration }) => (
         <div className="snake">
             <SnakePart type="head"
-                size={size}
-                position={head.position}
-                rotation={head.rotation}
-                transitionDuration={transitionDuration} />
+                       size={size}
+                       position={head.position}
+                       rotation={head.rotation}
+                       transitionDuration={transitionDuration}/>
             {tail.map((x) => (
                 <SnakePart key={x.id}
-                    type="tail"
-                    size={size}
-                    position={x.position}
-                    transitionDuration={transitionDuration} />
+                           type="tail"
+                           size={size}
+                           position={x.position}
+                           transitionDuration={transitionDuration}/>
             ))}
         </div>
-    )
+    ),
 )
 
-function mapStateToProps({ settings: { scale, transitionDuration }, snake: { direction, head, tail } }) {
+function mapStateToProps({
+                             settings: { scale, transitionDuration },
+                             snake: { head, tail },
+                             snakeMoveDirection,
+                         }) {
     return {
         size: toPx(scale),
         head: {
-            rotation: toRotation(direction),
-            position: scaleToPx(scale, head)
+            rotation: toRotation(snakeMoveDirection),
+            position: scaleToPx(scale, head),
         },
         tail: tail.map((x) => ({
             id: x.id,
-            position: scaleToPx(scale, x.position)
+            position: scaleToPx(scale, x.position),
         })),
-        transitionDuration
+        transitionDuration,
     }
 }
 
