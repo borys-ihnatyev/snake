@@ -1,8 +1,8 @@
-import uuid from 'uuid/v1'
 import { range } from 'ramda'
 import { CREATE, MOVE } from './snakeActionTypes'
+import { Vector } from '../../physics/vector'
 
-const defaultState = {}
+const defaultState = []
 
 export function snakeReducer(state = defaultState, action) {
 
@@ -14,43 +14,28 @@ export function snakeReducer(state = defaultState, action) {
             y: fieldSize.height / 2,
         }
 
-        const tail = range(head.x + 1, head.x + snakeLength)
-            .map((x) => createSnakePart({ x, y: head.y }))
+        const tail = range(head.x + 1, head.x + snakeLength).map((x) => ({ x, y: head.y }))
 
-        return {
-            head,
-            tail,
-        }
+        return [ head, ...tail, ]
     }
 
     if (action.type === MOVE) {
-        const {  head: prevHead, tail } = state
+        const [ prevHead, ...prevTail ] = state
         const { fieldSize, direction } = action
 
-        return {
-            head: mapPointToField({
-                x: prevHead.x + direction.x,
-                y: prevHead.y + direction.y,
-            }, fieldSize),
-            tail: [createSnakePart(prevHead), ...withoutLast(tail)],
-        }
+        const newHead = onField(Vector.add(prevHead, direction), fieldSize)
+
+        return [
+            newHead,
+            prevHead,
+            ...prevTail.slice(0, prevTail.length - 1)
+        ]
     }
 
     return state
 }
 
-function createSnakePart({ x, y }) {
-    return {
-        id: uuid(),
-        position: { x, y },
-    }
-}
-
-function withoutLast(arr) {
-    return arr.slice(0, arr.length - 1)
-}
-
-function mapPointToField(point, fieldSize) {
+function onField(point, fieldSize) {
     return {
         x: mod(point.x, fieldSize.width),
         y: mod(point.y, fieldSize.height),

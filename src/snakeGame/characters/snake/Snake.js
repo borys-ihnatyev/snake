@@ -25,7 +25,7 @@ export const Snake = connect(mapStateToProps)(
 
 function mapStateToProps({
                              settings: { scale, transitionDuration },
-                             snake: { head, tail },
+                             snake: [ head, ...tail ],
                              snakeMoveDirection,
                          }) {
     return {
@@ -34,9 +34,9 @@ function mapStateToProps({
             rotation: toRotation(snakeMoveDirection),
             position: scaleToPx(scale, head),
         },
-        tail: tail.map((x) => ({
-            id: x.id,
-            position: scaleToPx(scale, x.position),
+        tail: tail.map((position) => ({
+            id: `${position.x}:${position.y}`,
+            position: scaleToPx(scale, position),
         })),
         transitionDuration,
     }
