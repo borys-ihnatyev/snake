@@ -67,14 +67,14 @@ function mapPointToField(point, fieldSize) {
     }
 }
 
-function mod(x, width) {
-    if (x < 0) {
-        return width - 1
+function mod(value, size) {
+    if (value < 0) {
+        return size - 1
     }
 
-    if (x >= width) {
+    if (value >= size) {
         return 0
     }
 
-    return x
+    return value
 }

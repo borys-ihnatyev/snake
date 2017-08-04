@@ -6,7 +6,7 @@ export const sceneActionTypes = {
     startWelcomeScene: 'scene/startWelcomeScene',
 }
 
-export const startPlaySceneAction = () => (dispatch, getState) => {
+export const startPlaySceneAction = () => (dispatch) => {
     dispatch(createSnakeAction())
     dispatch(createPreyAction())
     dispatch({ type: sceneActionTypes.startPlayScene })

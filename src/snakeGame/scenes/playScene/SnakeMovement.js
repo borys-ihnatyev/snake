@@ -18,4 +18,4 @@ export const SnakeMovement = connect()(
             return this.props.children
         }
     }
-) 
+)
