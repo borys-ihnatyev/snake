@@ -5,7 +5,12 @@ const defaultSnakeMoveDirectionState = UP
 
 export function snakeMoveDirectionReducer(state = defaultSnakeMoveDirectionState, action) {
     if (action.type === CHANGE_SNAKE_MOVE_DIRECTION) {
-        return action.direction
+        const { direction } = action
+
+        if ((state.x !== -direction.x) && (state.y !== -direction.y)) {
+            return action.direction
+        }
+
     }
     return state
 }
