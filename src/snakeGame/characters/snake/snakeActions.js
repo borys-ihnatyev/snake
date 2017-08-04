@@ -1,4 +1,4 @@
-import { CREATE, DIRECT, MOVE } from './snakeActionTypes'
+import { CREATE, MOVE } from './snakeActionTypes'
 
 export const createSnakeAction = () => (dispatch, getState) => {
     const { settings } = getState()
