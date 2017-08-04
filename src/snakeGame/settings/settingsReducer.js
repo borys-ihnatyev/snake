@@ -6,6 +6,7 @@ const defaultSettingsState = {
         width: 40,
         height: 20,
     },
+    transitionDuration: 250 // todo should be dynamic
 }
 
 export const settingsReducer = () => defaultSettingsState

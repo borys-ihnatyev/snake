@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { SnakePart } from './SnakePart'
+import { SnakePart } from './snakePart'
 import { toPx, scaleToPx } from '../../physics/scale'
 import './Snake.css'
 
@@ -23,7 +23,7 @@ export const Snake = connect(mapStateToProps)(
     )
 )
 
-function mapStateToProps({ settings: { scale }, snake: { direction, head, tail } }) {
+function mapStateToProps({ settings: { scale, transitionDuration }, snake: { direction, head, tail } }) {
     return {
         size: toPx(scale),
         head: {
@@ -34,7 +34,7 @@ function mapStateToProps({ settings: { scale }, snake: { direction, head, tail }
             id: x.id,
             position: scaleToPx(scale, x.position)
         })),
-        transitionDuration: 250 // todo map from smwhr
+        transitionDuration
     }
 }
 
