@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createSnakeGameAction } from '../../rules/redux'
+import { Overlay } from '../../../ui'
 import './LooseScene.css'
 
 const mapDispatchToProps = (dispatch) => ({
@@ -9,13 +10,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 export const LooseScene = connect(null, mapDispatchToProps)(
     ({ onRestartClick }) => (
-        <div className="loose-scene">
-            <div className="loose-scene__loose">
-                You loose 😞
+        <Overlay>
+            <div className="loose-scene">
+                <div className="loose-scene__loose">
+                    You loose <span role="img" aria-label="sad">😞</span>
+                </div>
+                <div className="loose-scene__restart" onClick={onRestartClick}>
+                    Restart <span role="img" aria-label="snake">🐍</span>
+                </div>
             </div>
-            <div className="loose-scene__restart" onClick={onRestartClick}>
-                Restart 🐍
-            </div>
-        </div>
+        </Overlay>
     ),
 )

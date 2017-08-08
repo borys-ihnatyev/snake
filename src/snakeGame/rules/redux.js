@@ -6,7 +6,7 @@ const CHANGE_SNAKE_DIRECTION = 'snakeGame/changeSnakeDirection'
 
 const defaultGameState = {
     status: GameStatus.NOT_STARTED,
-    state: {}
+    state: null
 }
 
 export function snakeGameReducer({ status, state } = defaultGameState, action) {
