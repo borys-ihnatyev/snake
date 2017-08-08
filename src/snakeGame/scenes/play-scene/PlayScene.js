@@ -1,9 +1,9 @@
 import React from 'react'
-import { KeyboardController } from '../../keyboardController'
-import { SnakeMovement } from './SnakeMovement'
-import { playSceneKeyboardActionMap } from './playSceneKeyboardActionMap'
-import { PlayField, Prey } from '../../environment'
 import { Snake } from '../../characters'
+import { PlayField, Prey } from '../../environment'
+import { KeyboardController } from '../../keyboardController'
+import { playSceneKeyboardActionMap } from './playSceneKeyboardActionMap'
+import { SnakeMovement } from './SnakeMovement'
 
 export const PlayScene = () => (
     <KeyboardController actionMap={playSceneKeyboardActionMap}>

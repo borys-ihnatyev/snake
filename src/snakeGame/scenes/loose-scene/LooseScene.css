@@ -1,0 +1,14 @@
+.loose-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.loose-scene__loose {
+}
+
+.loose-scene__restart {
+    cursor: pointer;
+}
