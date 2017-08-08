@@ -1,36 +1,36 @@
 .snake-part {
-	position: absolute;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	top: 0;
-	left: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
 }
 
 .snake-part_head {
-	z-index: 3;
-	background-color: #fff;
+    z-index: 3;
+    background-color: #fff;
 }
 
 .snake-part_head::before,
 .snake-part_head::after {
-	content: '';
-	margin-top: 2px;
-	width: 6px;
-	height: 6px;
-	border-radius: 3px;
-	background-color: #000;
+    content: '';
+    margin-top: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #000;
 }
 
 .snake-part_tail {
-	z-index: 2;
-	background-color: palegreen;
-}
-
-.snake-part_tail:last-child {
-	background-color: deepskyblue;
+    z-index: 2;
+    background-color: palegreen;
 }
 
 .snake-part_tail:nth-child(2n - 1) {
-	background-color: deepskyblue;
+    background-color: deepskyblue;
+}
+
+.snake-part.snake-part_with-prey {
+    background-color: plum;
 }
