@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
+import { scaleToPx, toPx } from '../../physics/scale'
 import { Cake } from './cake'
-import { toPx, scaleToPx } from '../../physics/scale'
 
-const mapStateToProps = ({ settings: { scale }, prey: { position } }) => ({
+const mapStateToProps = ({ settings: { scale }, game: { state: { prey } } }) => ({
     size: toPx(scale),
-    position: scaleToPx(scale, position)
+    position: scaleToPx(scale, prey),
 })
 
 export const Prey = connect(mapStateToProps)(Cake)

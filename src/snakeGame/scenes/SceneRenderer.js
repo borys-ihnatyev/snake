@@ -1,13 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { PlayScene } from './playScene/PlayScene'
 import './SceneRenderer.css'
 
-const mapStateToProps = ({ scene }) => ({ Scene: scene })
-
-export const SceneRenderer = connect(mapStateToProps)(
-    ({ Scene }) => (
-        <div className="scene">
-            <Scene />
-        </div>
-    )
+export const SceneRenderer = () => (
+    <div className="scene">
+        <PlayScene/>
+    </div>
 )

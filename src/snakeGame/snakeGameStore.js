@@ -1,20 +1,14 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { settingsReducer } from './settings'
-import { sceneReducer } from './scenes'
-import { snakeReducer } from './characters'
-import { preyReducer } from './environment'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import { snakeMoveDirectionReducer } from './characters/snake/behavior/snakeMoveDirectionReducer'
+import { snakeGameReducer } from './rules/redux'
+import { settingsReducer } from './settings'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const createSnakeGameStore = () => createStore(
     combineReducers({
         settings: settingsReducer,
-        scene: sceneReducer,
-        snake: snakeReducer,
-        snakeMoveDirection: snakeMoveDirectionReducer,
-        prey: preyReducer,
+        game: snakeGameReducer,
     }),
-    composeEnhancers(applyMiddleware(thunk))
+    composeEnhancers(applyMiddleware(thunk)),
 )

@@ -1,1 +1,1 @@
-export * from './settingsReducer'
+export * from './settings-reducer'

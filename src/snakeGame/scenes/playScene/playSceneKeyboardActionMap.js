@@ -1,11 +1,10 @@
-import { UP, DOWN, LEFT, RIGHT } from '../../physics/direction'
-import { startWelcomeSceneAction } from '../sceneActions'
-import { changeSnakeMoveDirectionAction } from '../../characters'
+import { changeSnakeDirectionAction, createSnakeGameAction } from '../../rules/redux'
+import { DOWN, LEFT, RIGHT, UP } from '../../rules/spaceMetrics/direction'
 
 export const playSceneKeyboardActionMap = {
-    'ArrowUp': changeSnakeMoveDirectionAction(UP),
-    'ArrowDown': changeSnakeMoveDirectionAction(DOWN),
-    'ArrowLeft': changeSnakeMoveDirectionAction(LEFT),
-    'ArrowRight': changeSnakeMoveDirectionAction(RIGHT),
-    'Escape': startWelcomeSceneAction(),
+    'ArrowUp': changeSnakeDirectionAction(UP),
+    'ArrowDown': changeSnakeDirectionAction(DOWN),
+    'ArrowLeft': changeSnakeDirectionAction(LEFT),
+    'ArrowRight': changeSnakeDirectionAction(RIGHT),
+    'Escape': createSnakeGameAction(),
 }

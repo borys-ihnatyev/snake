@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { moveSnakeAction } from '../../characters'
+import { GameStatus } from '../../rules/game'
+import { createSnakeGameAction, renderSnakeGameNextFrameAction } from '../../rules/redux'
 
-export const SnakeMovement = connect()(
+export const SnakeMovement = connect(mapStateToProps)(
     class extends React.Component {
         componentDidMount() {
-            this.timer = setInterval(() => {
-                this.props.dispatch(moveSnakeAction())
-            }, 250)
+            const { interval, dispatch } = this.props
+            dispatch(createSnakeGameAction())
+            this.timer = setInterval(() => dispatch(renderSnakeGameNextFrameAction()), interval)
         }
 
         componentWillUnmount() {
@@ -15,7 +16,18 @@ export const SnakeMovement = connect()(
         }
 
         render() {
-            return this.props.children
+            if (this.props.isReady) {
+                return this.props.children
+            }
+
+            return null
         }
-    }
+    },
 )
+
+function mapStateToProps({ settings, game }) {
+    return {
+        isReady: game.status === GameStatus.CONTINUE,
+        interval: settings.transitionDuration,
+    }
+}

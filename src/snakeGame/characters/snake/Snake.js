@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { SnakePart } from './snakePart'
-import { toPx, scaleToPx } from '../../physics/scale'
+import { scaleToPx, toPx } from '../../physics/scale'
 import './Snake.css'
+import { SnakePart } from './snakePart'
 
 export const Snake = connect(mapStateToProps)(
     ({ size, head, tail, transitionDuration }) => (
@@ -25,16 +25,15 @@ export const Snake = connect(mapStateToProps)(
 
 function mapStateToProps({
                              settings: { scale, transitionDuration },
-                             snake: [ head, ...tail ],
-                             snakeMoveDirection,
+                             game: {state: {snake: [ head, ...tail ], snakeDirection}},
                          }) {
     return {
         size: toPx(scale),
         head: {
-            rotation: toRotation(snakeMoveDirection),
-            position: scaleToPx(scale, head),
+            rotation: toRotation(snakeDirection),
+            position: scaleToPx(scale, head.position),
         },
-        tail: tail.map((position) => ({
+        tail: tail.map(({position}) => ({
             id: `${position.x}:${position.y}`,
             position: scaleToPx(scale, position),
         })),
