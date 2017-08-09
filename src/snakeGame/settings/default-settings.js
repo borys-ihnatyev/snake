@@ -6,5 +6,5 @@ export const defaultSettings = {
         width: 40,
         height: 20,
     },
-    transitionDuration: 250
+    transitionDuration: 50
 }
