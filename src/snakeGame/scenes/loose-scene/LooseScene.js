@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createSnakeGameAction } from '../../rules/redux'
-import { KeyboardController } from '../../keyboardController'
+import { KeyboardController } from '../../keyboard-controller'
 import { Overlay } from '../../../ui'
 import './LooseScene.css'
 
